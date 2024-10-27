@@ -5,15 +5,15 @@ pipeline {
     }
     
     stages {
-        stage("Git Checkout") {
-            steps {
-                git branch: 'main', url: 'https://github.com/khanhnguyen7802/WebApplication'
-            }
-        }
+        // stage("Git Checkout") {
+        //     steps {
+        //         git branch: 'main', url: 'https://github.com/khanhnguyen7802/WebApplication'
+        //     }
+        // }
 
         stage("Build") {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
     }
