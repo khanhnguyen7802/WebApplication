@@ -16,5 +16,20 @@ pipeline {
                 bat 'mvn -B -DskipTests clean package'
             }
         }
+
+        stage("Archive") {
+            steps {
+                archiveArtifacts artifacts: 'target\\*.jar', allowEmptyArchive: false, onlyIfSuccessful: true
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and archive completed successfully.'
+        }
+        failure {
+            echo 'Build or archive failed.'
+        }
     }
 }
